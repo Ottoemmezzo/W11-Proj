@@ -17,9 +17,9 @@ export class AuthGuard implements CanActivate{
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-      if (!this.authSrv.logged)return this.router.createUrlTree(["/login"]);
-      else return true;
-                /*return this.authSrv.isLoggedIn$.pipe(
+      /*if (!this.authSrv.logged)return this.router.createUrlTree(["/login"]);
+      else return true;*/
+                return this.authSrv.isLoggedIn$.pipe(
                                                       take(1),
                                                       map((isLoggedin) => {
                                                                             if (isLoggedin) {
@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate{
                                                                                             }
                                                                             return this.router.createUrlTree(["/login"]);
                                                                             })
-    );*/
+    );
 
   }
 }

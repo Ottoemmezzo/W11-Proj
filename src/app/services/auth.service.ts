@@ -84,6 +84,7 @@ export class AuthService {
   path: string = 'http://localhost:4201/api'
   constructor(private http: HttpClient, private router: Router) {
     this.restore()
+    //this.logged=true;
    }
 
   signUp(user: {email: string, password:string, name: string}){
@@ -117,7 +118,7 @@ export class AuthService {
     if (this.jwtHelper.isTokenExpired(userdata.accessToken)) {
       return
     }
-    //this.authSubject.next(userdata)
+    this.authSubject.next(userdata)
     this.logged=true;
 
 
