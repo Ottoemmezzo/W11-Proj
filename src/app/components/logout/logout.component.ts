@@ -17,7 +17,7 @@ export class LogoutComponent implements OnInit,OnChanges {
   ngOnInit(): void {
     localStorage.removeItem('UserData');
     localStorage.removeItem('user');
-    this.authSrv.isLoggedIn$ = this.user$.pipe(map(u=>!!u))
+    this.authSrv.isLoggedIn$ = this.user$.pipe(map(u=>!u))//.subscribe()
 
     //this.authSrv.isLoggedIn$ =false; //this.authSrv.user$.pipe(map(u=>!!!u))
     //this.authSrv.isLoggedIn$.pipe(map(ob=> ob=false)).subscribe();
