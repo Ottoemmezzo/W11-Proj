@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -15,10 +15,11 @@ export class LogoutComponent implements OnInit,OnChanges {
   constructor(private router:Router, private authSrv:AuthService) { }
 
   ngOnInit(): void {
+    this.authSrv.authSubject.next(null);
     localStorage.removeItem('UserData');
     localStorage.removeItem('user');
-    this.authSrv.isLoggedIn$ = this.user$.pipe(map(u=>!u))//.subscribe()
-
+    this.authSrv.logged=false;
+    //this.user$.next(null);
     //this.authSrv.isLoggedIn$ =false; //this.authSrv.user$.pipe(map(u=>!!!u))
     //this.authSrv.isLoggedIn$.pipe(map(ob=> ob=false)).subscribe();
     this.router.navigate(['/login'])
