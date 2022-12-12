@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { MovieComponent } from './components/movie/movie.component';
@@ -13,7 +14,8 @@ const routes: Routes = [
   },
   {
     path: "movies",
-    component: MovieComponent
+    component: MovieComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "register",
@@ -21,7 +23,8 @@ const routes: Routes = [
   },
   {
     path: "profile",
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "logout",

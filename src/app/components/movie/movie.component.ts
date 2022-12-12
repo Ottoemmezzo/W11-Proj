@@ -61,9 +61,18 @@ getFav(){
       this.movieSrv.getFav().pipe(tap(data => {
       this.favorites = data;
       console.log(this.favorites);
+      let k=0;
+      this.favorites.forEach(f=>{
+        if (f.userId==this.user.id)
+        {
+          this.userFavorites[k]=f;
+          k++;
+        }
+      })
 
-      this.userFavorites=this.favorites.filter(f=>f.id=this.user.id);
-      console.log(this.userFavorites);
+      console.log('favoriti_utente',this.userFavorites);
+      console.log('user id:',this.user.id);
+
       let j=0;
       let i=0;
       while(j<this.userFavorites.length)

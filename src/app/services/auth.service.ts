@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, tap } from 'rxjs';
-
+import {  map, tap } from 'rxjs/operators';
+import {BehaviorSubject} from 'rxjs'
 
 export interface AuthData {
   accessToken: string,
@@ -23,6 +23,10 @@ export interface SignupData {
 })
 export class AuthService {
   authSubject  = new BehaviorSubject<null | AuthData>(null);
+  user$ = this.authSubject.asObservable()
+  isLoggedIn$ = this.user$.pipe(map(u=>!!u))
+
+
   user! : {id: number, email: string };
 
 

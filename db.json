@@ -35,6 +35,12 @@
       "password": "$2a$10$Tau357Z.KeRddVxnbZo8J.IhIScK1YVYWrzWwIYTMT60EgGGKh6.6",
       "name": "Serena",
       "id": 6
+    },
+    {
+      "email": "sebastiano.lazzeri@gmail.com",
+      "password": "$2a$10$6ouDqXOJVqu4zQoOKpst7eCTe3DdNTo4IyGknbyO2PeuIJGAvbH0i",
+      "name": "Sebastiano",
+      "id": 7
     }
   ],
   "favorites": [
@@ -45,8 +51,18 @@
     },
     {
       "userId": 5,
+      "movieId": 632357,
+      "id": 3
+    },
+    {
+      "userId": 7,
+      "movieId": 804435,
+      "id": 5
+    },
+    {
+      "userId": 7,
       "movieId": 578701,
-      "id": 2
+      "id": 6
     }
   ],
   "genres": [
