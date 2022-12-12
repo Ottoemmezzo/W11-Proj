@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(f: NgForm){
-    this.authSrv.signIn(f.value).pipe(tap(res => {localStorage.setItem("UserData", JSON.stringify(res.user))})).subscribe();
-    this.router.navigate(['/movies'])
+    this.authSrv.signIn(f.value).pipe(tap(res => {localStorage.setItem("UserData", JSON.stringify(res.user))})).subscribe(()=>this.router.navigate(['/movies']));
+
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './logout.component.html',
   styleUrls: ['./logout.component.scss']
 })
-export class LogoutComponent implements OnInit {
+export class LogoutComponent implements OnInit,OnChanges {
 
   constructor(private router:Router) { }
 
@@ -18,5 +18,7 @@ export class LogoutComponent implements OnInit {
 
 
   }
-
+ ngOnChanges(){
+  this.router.navigate(['/login'])
+ }
 }

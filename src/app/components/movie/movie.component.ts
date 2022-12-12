@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Favorite, Movie, MovieService } from 'src/app/services/movie.service';
 import { forkJoin, tap } from 'rxjs';
 import { map } from 'rxjs';
@@ -9,7 +9,7 @@ import { map } from 'rxjs';
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.scss']
 })
-export class MovieComponent implements OnInit {
+export class MovieComponent implements OnInit, OnChanges {
   movies: Movie[] = []
   favorite: Partial<Favorite> = {
     userId: 0,
@@ -38,6 +38,10 @@ export class MovieComponent implements OnInit {
     // this.userId = JSON.parse(localStorage.getItem("userData")!)
     }
 
+  }
+  ngOnChanges(){
+    this.user = JSON.parse(localStorage.getItem('UserData')!);
+    this.printMovies();
   }
 getFav(){
   /*this.movieSrv.getMovies().pipe(tap(ris => {
